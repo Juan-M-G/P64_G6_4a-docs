@@ -3,7 +3,7 @@ import org.springframework.data.annotation.Id;
 import java.util.Date;
 public class Bill {
     @Id
-    private Integer id;
+    private final Integer id;
     private String clientName;
     private Date billDate;
     private Boolean isActive;

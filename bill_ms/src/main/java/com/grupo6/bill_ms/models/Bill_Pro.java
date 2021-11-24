@@ -1,47 +1,30 @@
 package com.grupo6.bill_ms.models;
 
 import org.springframework.data.annotation.Id;
-        import java.util.Date;
 public class Bill_Pro {
     @Id
-    private String id;
-    private String usernameOrigin;
-    private String usernameDestiny;
-    private Integer value;
-    private Date date;
-    public Bill_Pro(String id, String usernameOrigin, String usernameDestiny, Integer
-            value, Date date) {
+    private final Integer id;
+    private Integer amount;
+    private Integer sub_total;
+    public Bill_Pro(Integer id, Integer amount, Integer sub_total) {
         this.id = id;
-        this.usernameOrigin = usernameOrigin;
-        this.usernameDestiny = usernameDestiny;
-        this.value = value;
-        this.date = date;
+        this.amount = amount;
+        this.sub_total = sub_total;
     }
-    public String getId() {
+    //faltan las fk bill_id y product_id
+    public Integer getId() {
         return id;
     }
-    public String getUsernameOrigin() {
-        return usernameOrigin;
+    public Integer getAmount() {
+        return amount;
     }
-    public void setUsernameOrigin(String usernameOrigin) {
-        this.usernameOrigin = usernameOrigin;
+    public void setAmount(Integer amount) {
+        this.amount = amount;
     }
-    public String getUsernameDestiny() {
-        return usernameDestiny;
+    public Integer getSub_total() {
+        return sub_total;
     }
-    public void setUsernameDestiny(String usernameDestiny) {
-        this.usernameDestiny = usernameDestiny;
-    }
-    public Integer getValue() {
-        return value;
-    }
-    public void setValue(Integer value) {
-        this.value = value;
-    }
-    public Date getDate() {
-        return date;
-    }
-    public void setDate(Date date) {
-        this.date = date;
+    public void setSub_total(Integer sub_total) {
+        this.sub_total = sub_total;
     }
 }
