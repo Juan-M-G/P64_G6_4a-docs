@@ -11,12 +11,12 @@ public class BillController {
     public BillController(BillRepository billRepository) {
         this.billRepository = billRepository;
     }
-    @GetMapping("/bills/{id}")
+    @GetMapping("/bill/{id}")
     Bill getBill(@PathVariable Integer id){
         return billRepository.findById(id).orElseThrow(() -> new BillNotFoundException("No se encontró una factura con el número: " + id));
     }
     @GetMapping("/bills")
-    List<Bill> Bills(@PathVariable Integer id){
+    List<Bill> Bills(){
         return billRepository.findAll();
     }
     @PostMapping("/bills")
