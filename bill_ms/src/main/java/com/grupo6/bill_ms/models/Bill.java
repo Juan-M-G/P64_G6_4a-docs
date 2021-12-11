@@ -4,26 +4,30 @@ import java.util.Date;
 public class Bill {
     @Id
     private Integer id;
-    private String clientName;
+    private String clientId;
     private Date billDate;
     private Boolean isActive;
-    //campo para user pk
+    private Integer userId;//agregué este campo
 
-    public Bill(Integer id, String clientName, Boolean isActive, Date billDate) {
+    public Bill(Integer id, String clientId, Boolean isActive, Date billDate, Integer userId) {
         this.id = id;
-        this.clientName = clientName;
+        this.clientId = clientId;
         this.isActive = isActive;
         this.billDate = billDate;
+        this.userId = userId;
     }
 
     public Integer getId() {
         return id;
     }
-    public String getClientName() {
-        return clientName;
+    public Integer getUserId() {
+        return userId;
     }
-    public void setClientName(String clientName) {
-        this.clientName = clientName;
+    public String getClientId() {
+        return clientId;
+    }
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
     }
     public Boolean getIsActive() {
         return isActive;

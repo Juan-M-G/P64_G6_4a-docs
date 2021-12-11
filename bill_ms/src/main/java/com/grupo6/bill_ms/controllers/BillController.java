@@ -23,4 +23,8 @@ public class BillController {
     Bill newBill(@RequestBody Bill bill){
         return billRepository.save(bill);
     }
+    @PutMapping("/bills")
+    Bill editBill(@RequestBody Bill bill){
+        return billRepository.save(bill);
+    }
 }
