@@ -1,12 +1,12 @@
 const productResolver = {
     Query: {
         products: ( _, {}, { dataSources, userIdToken }) => {
-            if (userIdToken) return dataSources.productAPI.getProducts();
+            if (userIdToken) return dataSources.billAPI.getProducts();
             else return null;
         },
 
         productById: (_, { id }, { dataSources, userIdToken }) => {
-            if (userIdToken) return dataSources.productAPI.getProductById(id);
+            if (userIdToken) return dataSources.billAPI.getProductById(id);
             else return null;
         }
     },
@@ -18,7 +18,7 @@ const productResolver = {
                     product_stock: product.stock,
                     product_price: product.price,
                 }
-                return await dataSources.productAPI.createProduct(productInput);
+                return await dataSources.billAPI.createProduct(productInput);
             } else {
                 return null;
             }
@@ -32,13 +32,13 @@ const productResolver = {
                     product_price: product.price,
                     is_active: product.active,
                 }
-                return await dataSources.productAPI.updateProduct(productInput);
+                return await dataSources.billAPI.updateProduct(productInput);
             } else {
                 return null;
             }
         },
         deleteProduct: async (_, { id }, { dataSources, userIdToken }) => {
-            if (userIdToken) return await dataSources.productAPI.deleteProduct(id);
+            if (userIdToken) return await dataSources.billAPI.deleteProduct(id);
             else return null;
         }
     },
