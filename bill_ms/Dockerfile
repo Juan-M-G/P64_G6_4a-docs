@@ -1,5 +1,8 @@
-FROM openjdk:17-jdk-alpine
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
-CMD gunicorn --bind 0.0.0.0:$PORT wsgi
+FROM python:3
+ENV PYTHONUNBUFFERED 1
+RUN mkdir /admin
+WORKDIR /admin
+ADD . /admin/
+RUN pip install -r requirements.txt
+EXPOSE 8080
+CMD python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:$PORT
