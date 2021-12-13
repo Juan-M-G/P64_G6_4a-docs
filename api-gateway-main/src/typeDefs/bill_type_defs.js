@@ -1,27 +1,34 @@
 const { gql } = require("apollo-server");
 
 const billTypeDefs = gql`
-  type BillDetail {
+  
+type BillDetail{
     product_name: String!
     product_amount: Int!
+    product_price: Int
+    sub_total_price: Int
   }
-
-  type Bill {
-    id_bill: Int!
-    client_name: String!
-    purchase_Date: String!
-    isActive: Boolean!
-    user_id: Int!
-    products: [BillDetail!]!
+  
+   type Bill {
+    id_bill: Int
+    client_name: String
+    purchase_date: String
+    total_bill: Int
+    user: Int
+    product:[BillDetail]
   }
 
   input BillInput {
-    id_bill: Int!
-    client_name: String!
-    purchase_Date: String!
-    isActive: Boolean!
-    user_id: Int!
-    products: String!
+    client_name: String
+    purchase_Date: String
+    isActive: Boolean
+    user_id: Int
+    products: [BillDetailInput]
+  }
+
+  input BillDetailInput{
+    product_name: String!
+    product_amount: Int!
   }
 
   extend type Query {

@@ -16,8 +16,10 @@ class BillAPI extends RESTDataSource {
     //     return await this.get('/bills');
     // }
 
-    async getBillById(id_pro) {
-        return await this.get(`/bill/${id_pro}`);
+    async getBillById(id_bill) {
+        let obje = await this.get(`/bill/${id_bill}`);
+     //   console.log(obje.product);
+        return obje;
     }
 
     // async updateBill(bill) {

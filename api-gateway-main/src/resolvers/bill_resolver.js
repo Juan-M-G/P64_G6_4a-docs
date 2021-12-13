@@ -5,8 +5,8 @@ const billResolver = {
         //     else return null;
         // },
 
-        productById: (_, { id }, { dataSources, userIdToken }) => {
-            if (userIdToken) return dataSources.billAPI.getBillById(id);
+        billById: (_, { id_bill }, { dataSources, userIdToken }) => {
+            if (userIdToken) return dataSources.billAPI.getBillById(id_bill);
             else return null;
         }
     },
@@ -18,7 +18,7 @@ const billResolver = {
                     purchase_Date: bill.purchase_Date,
                     isActive: bill.isActive,
                     user_id: bill.user_id,
-                    products: bill.BillDetail,
+                    products: bill.products,
                 }
                 return await dataSources.billAPI.createBill(billInput);
             } else {
