@@ -2,16 +2,16 @@
   <div v-if="loaded" class="information">
     <h1>Información de su factura</h1>
     <h3>
-      Número de factura: <span>{{ id_bill }}</span>
+      Número de factura: <span>{{ billById.id_bill }}</span>
     </h3>
     <h3>
-      Vendedor: <span>{{ user }}</span>
+      Vendedor: <span>{{ billById.user }}</span>
     </h3>
     <h3>
-      Cliente: <span>{{ client_name }}</span>
+      Cliente: <span>{{ billById.client_name }}</span>
     </h3>
     <h3>
-      Fecha de compra: <span>{{ purchase_date }}</span>
+      Fecha de compra: <span>{{ billById.purchase_date }}</span>
     </h3>
     <!-- <h3>
       Productos: <span>{{ product }}</span>
@@ -23,7 +23,7 @@
         <th>Precio Unidad</th>
         <th>Precio total</th>
       </tr>
-      <tr v-for="pro in product" v-bind:key="pro">
+      <tr v-for="pro in billById.product" v-bind:key="pro">
         <td v-text="pro.product_name"></td>
         <td v-text="pro.product_amount"></td>
         <td v-text="pro.product_price"></td>
@@ -49,7 +49,7 @@ export default {
         id_bill: "",
         client_name: "",
         purchase_date: "",
-        otal_bill: "",
+        total_bill: "",
         user: "",
         product: {
           product_name: "",
@@ -61,7 +61,7 @@ export default {
     };
   },
   apollo: {
-    userDetailById: {
+    billById: {
       query: gql`
         query ($id_bill: Int!) {
           billById(id_bill: Int!) {
@@ -81,7 +81,7 @@ export default {
       `,
       variables() {
         return {
-          userId: this.userId,
+          id_bill: this.id_bill,
         };
       },
     },
